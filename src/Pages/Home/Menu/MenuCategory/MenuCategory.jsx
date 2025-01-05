@@ -6,7 +6,7 @@ import MenuItem from "../../../Shared/MenuItem/MenuItem";
 const MenuCategory = ({ items, title, coverImage }) => {
     return (
         <div>
-            {title && <Cover img={coverImage} title="Our Menu" />}
+            {title && <Cover img={coverImage} title={title} />}
             <div className="mb-4 grid md:grid-cols-2">
 
                 {
