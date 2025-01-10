@@ -6,11 +6,12 @@ import 'react-tabs/style/react-tabs.css';
 
 import useMenu from '../../Hooks/useMenu';
 import { useState } from 'react';
-import FoodCard from '../../components/FoodCard/FoodCard';
 import OrderTab from './OrderTab';
+import { useParams } from 'react-router-dom';
 
 const Order = () => {
     const [menu] = useMenu();
+    const {category}= useParams(); 
     const offered = menu.filter(item => item.category == 'offered');
     const desserts = menu.filter(item => item.category == 'dessert');
     const pizzas = menu.filter(item => item.category == 'pizza');
@@ -18,8 +19,12 @@ const Order = () => {
     const salads = menu.filter(item => item.category == 'salad');
     const drinks = menu.filter(item => item.category == 'drinks');
     //change tabs
-    const [tabIndex, setTabIndex] = useState(0);
+    const categories= ['offered', 'dessert','pizza', 'soup', 'salad', 'drinks']; 
+    const initialIndex= categories.indexOf(category); 
+    const [tabIndex, setTabIndex] = useState(initialIndex);
 
+    // console.log(tabIndex); 
+    
     return (
         <div>
             <Cover img={orderCover} title="Order Food" />
